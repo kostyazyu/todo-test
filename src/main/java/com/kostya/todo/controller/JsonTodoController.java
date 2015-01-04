@@ -30,11 +30,6 @@ public class JsonTodoController {
         return todo;
     }
 
-    @RequestMapping(value = "/json/todo/list", method = RequestMethod.GET)
-    public @ResponseBody List<TodoItem> list() {
-        return dao.list();
-    }
-
     @RequestMapping(value = "/json/todo/list", method = RequestMethod.POST)
     public @ResponseBody List<TodoItem> list(@RequestBody Filter filter) {
         logger.info("Test: {}",filter);
