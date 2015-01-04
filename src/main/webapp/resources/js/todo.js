@@ -3,15 +3,17 @@ function TodoCtrl($scope,$http) {
   $scope.todos = [];
   $scope.filter = 'ALL';
 
-  $scope.$watch('filter', function(filter) {
-    var listHandle = $http.post('json/todo/list',{type: filter, sortField: "text", sortDirection: "ASC"});
-    listHandle.success(function(data, status, headers, config){
+  var filterFunction = function(filter) {
+    var listHandle = $http.post('json/todo/list', {type: filter, sortField: "text", sortDirection: "ASC"});
+    listHandle.success(function (data, status, headers, config) {
       $scope.todos = data;
     });
-    listHandle.error(function(data, status, headers, config){
+    listHandle.error(function (data, status, headers, config) {
       alert('error');
     });
-  });
+  }
+
+  $scope.$watch('filter', filterFunction);
 
 /*  $scope.$watch('$viewContentLoaded', function(){
     var listHandle = $http.get('json/todo/list');
@@ -27,24 +29,27 @@ function TodoCtrl($scope,$http) {
 
     var handle = $http.put('json/todo/create', {text: $scope.todoText, done:false} );
     handle.success(function(data, status, headers, config){
-        $scope.todos.push(data);
         console.log(data);
     });
     handle.error(function(data, status, headers, config){
       alert('error');
     });
+    filterFunction($scope.filter);
     $scope.todoText = '';
+
   };
 
   $scope.updateTodo = function(todo) {
 
     var handle = $http.post('json/todo/update', todo);
     handle.success(function(data, status, headers, config){
+      filterFunction($scope.filter);
       console.log(todo + 'name changed');
     });
     handle.error(function(data, status, headers, config){
       alert('error update');
     });
+
   };
 
   $scope.toggle = function(todo) {
@@ -53,6 +58,7 @@ function TodoCtrl($scope,$http) {
     handle.success(function(data, status, headers, config){
       if(data){
         todo.done = data.done;
+        filterFunction($scope.filter);
         console.log(todo + ' toggled');
       }else{
         alert('update not happened');
@@ -75,7 +81,6 @@ function TodoCtrl($scope,$http) {
     handle.error(function(data, status, headers, config){
       alert('error deleting');
     });
-
   };
   
 }

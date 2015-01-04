@@ -37,10 +37,10 @@ public class JsonTodoController {
     }
 
     @RequestMapping(value = "/json/todo/delete", method = RequestMethod.POST)
-    public @ResponseBody boolean deleteTodo(@RequestBody TodoItem todo) {
+    public @ResponseBody TodoItem deleteTodo(@RequestBody TodoItem todo) {
         logger.info("Call of deleteTodo: {}", todo.toString());
         dao.delete(todo);
-        return true;
+        return todo;
     }
 
     @RequestMapping(value = "/json/todo/update", method = RequestMethod.POST)
