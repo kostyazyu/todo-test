@@ -1,0 +1,78 @@
+body{
+background:url('../images/bender-back.jpg');
+background-attachment: fixed;
+font-family: 'Candara', arial;
+}
+.done-true {
+  color: #adc0c9;
+  text-decoration:line-through;
+}
+ul{
+	list-style:none;
+}
+input{
+font-family: 'Candara', arial;	
+}
+.wrap{
+	width: 720px;
+	min-height:400px;
+	margin: 0 auto;
+	background: #2c8fbf;
+	border:1px solid #be9e6d;
+	border-radius:8px;
+	padding: 10px;
+	opacity: 0.9;
+	color: white;
+}
+.pencil-link{
+	display:inline-block;
+	width:15px;
+	height:15px;	
+	background: #2c8fbf url('../images/pencil-small.png') no-repeat;
+	margin-left:10px;
+}
+.del-link{
+	display:inline-block;
+	width:20px;
+	height:20px;	
+	background: #2c8fbf url('../images/error.png') no-repeat;
+	margin-left:10px;
+}
+.table{
+	display:table;
+	width:100%;
+}
+.table-row{
+	display:table-row;
+}
+.table-header{
+	font-weight:bold;
+}
+.header-cell{
+	display:table-cell;
+	padding:5px;
+	border-bottom:2px solid white;
+	vertical-align:bottom;
+}
+.table-cell{
+	display:table-cell;
+	padding:5px;
+	border-bottom:1px solid white;
+}
+.cell-1{
+	width:65%;
+}
+.cell-2{
+	width:20%;
+	text-align:center;
+}
+.cell-3{
+	width:15%;
+	text-align:center;
+}
+.table-cell a{
+	color:#afeeee;
+	text-decoration:none;
+	font-size:0.8em;
+	font-style:italic;
+}
