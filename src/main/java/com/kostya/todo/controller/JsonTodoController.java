@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Konstantin on 02.01.2015.
@@ -58,4 +61,18 @@ public class JsonTodoController {
         return todo;
     }
 
+    @RequestMapping(value = "/json/todo/populate", method = RequestMethod.GET)
+    public @ResponseBody boolean populate() {
+        logger.info("Populate my base log");
+        List<String> first = Arrays.asList("walk", "sell", "eat", "make a cake of", "bake");
+        List<String> second = Arrays.asList("an elephant", "a nice squirrel", "my cat", "big sandwich", "an angry dog");
+        List<String> third = Arrays.asList("in friday", "tomorrow", "right now", "on Christmas", "in summer");
+        Random rnd = new Random();
+        for (int i = 0; i < 10; i++) {
+            String phrase =  first.get((int)(Math.random()*5)) + " " + second.get((int)(Math.random()*5)) + " " + third.get((int)(Math.random()*5));
+            TodoItem todo = new TodoItem(phrase);
+            dao.save(todo);
+        }
+        return true;
+    }
 }

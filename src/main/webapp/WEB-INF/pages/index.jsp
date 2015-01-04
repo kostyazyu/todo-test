@@ -11,12 +11,15 @@
 <div class="wrap">
     <h2>Список дел</h2>
     <div ng-controller="TodoCtrl">
+        <input class="btn-primary populate-btn" type="submit" ng-click="populate()" value="Заполнить список">
         <form ng-submit="addTodo()">
             <input type="text" ng-model="todoText"  size="30"
                    placeholder="Введите новое дело">
             <input class="btn-primary" type="submit" value="Добавить">
         </form>
-        <%--radio button show--%>
+
+
+        <%--radio button filter--%>
         <form name = "filterform">
             <input type="radio" ng-model="filter" value="ALL" > All
             <input type="radio" ng-model="filter" value="DONE"/> Done

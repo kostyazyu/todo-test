@@ -4,7 +4,7 @@ function TodoCtrl($scope,$http) {
   $scope.filter = 'ALL';
 
   var filterFunction = function(filter) {
-    var listHandle = $http.post('json/todo/list', {type: filter, sortField: "text", sortDirection: "ASC"});
+    var listHandle = $http.post('json/todo/list', {type: filter, sortField: "id", sortDirection: "ASC"});
     listHandle.success(function (data, status, headers, config) {
       $scope.todos = data;
     });
@@ -14,16 +14,6 @@ function TodoCtrl($scope,$http) {
   }
 
   $scope.$watch('filter', filterFunction);
-
-/*  $scope.$watch('$viewContentLoaded', function(){
-    var listHandle = $http.get('json/todo/list');
-    listHandle.success(function(data, status, headers, config){
-      $scope.todos = data;
-    });
-    listHandle.error(function(data, status, headers, config){
-      alert('error');
-    });
-  });*/
 
   $scope.addTodo = function() {
 
@@ -80,6 +70,17 @@ function TodoCtrl($scope,$http) {
     });
     handle.error(function(data, status, headers, config){
       alert('error deleting');
+    });
+  };
+
+  $scope.populate = function(){
+    var handle = $http.get('json/todo/populate');
+    handle.success(function(data, status, headers, config){
+      filterFunction($scope.filter);
+      console.log('base populated');
+    });
+    handle.error(function(data, status, headers, config){
+      alert('error populating');
     });
   };
   
