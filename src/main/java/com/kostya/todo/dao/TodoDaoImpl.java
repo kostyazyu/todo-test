@@ -27,6 +27,7 @@ public class TodoDaoImpl extends HibernateDaoSupport implements TodoDao {
 
     @Override
     public List<TodoItem> list(Filter filter) {
+//        getHibernateTemplate().set
         if (DoneType.ALL.equals(filter.getType())) {
             return (List<TodoItem>) getHibernateTemplate().find("from TodoItem order by " + filter.getSortField() + " " + filter.getSortDirection());
         } else {

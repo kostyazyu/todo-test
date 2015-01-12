@@ -21,9 +21,9 @@
 
         <%--radio button filter--%>
         <form name = "filterform">
-            <input type="radio" ng-model="filter" value="ALL" > All
-            <input type="radio" ng-model="filter" value="DONE"/> Done
-            <input type="radio" ng-model="filter" value="NOT_DONE"/> Not Done
+            <input type="radio" ng-model="filter" value="ALL" > Все
+            <input type="radio" ng-model="filter" value="DONE"/> Выполненные
+            <input type="radio" ng-model="filter" value="NOT_DONE"/> Не выполненные
         </form>
         <br/>
         <div class="table">

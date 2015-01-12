@@ -19,14 +19,14 @@ function TodoCtrl($scope,$http) {
 
     var handle = $http.put('json/todo/create', {text: $scope.todoText, done:false} );
     handle.success(function(data, status, headers, config){
-        console.log(data);
+      filterFunction($scope.filter);
+      console.log(data);
+
     });
     handle.error(function(data, status, headers, config){
       alert('error');
     });
-    filterFunction($scope.filter);
     $scope.todoText = '';
-
   };
 
   $scope.updateTodo = function(todo) {
